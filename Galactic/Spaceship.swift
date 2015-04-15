@@ -12,16 +12,9 @@ class Spaceship: SKSpriteNode {
     
     var missileVersion = 0
     
-    var missile : SKSpriteNode {
+    var missile : Missile {
         get {
-            switch (missileVersion) {
-            case 1:
-                return SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 10, height: 10))
-            default:
-                var missle1 = SKSpriteNode(imageNamed: "missle1")
-                missle1.size = CGSize(width: 12, height: 12)
-                return missle1
-            }
+            return Missile(missileVersion: missileVersion)
         }
     }
     

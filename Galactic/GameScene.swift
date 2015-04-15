@@ -22,7 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Collision Bitmasks
     let spaceshipCategory: UInt32 = 0x1 << 0
     let missileCategory: UInt32 = 0x1 << 1
-    let enemyCategory: UInt32 = 0x1 << 2
+    let enemyShipCategory: UInt32 = 0x1 << 2
+    let enemyMissileCategory: UInt32 = 0x1 << 3
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -66,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstNode = contact.bodyA.node as! SKSpriteNode
         let secondNode = contact.bodyB.node as! SKSpriteNode
         
-        if(contact.bodyA.categoryBitMask == enemyCategory) && (contact.bodyB.categoryBitMask == missileCategory) {
+        if(contact.bodyA.categoryBitMask == enemyShipCategory) && (contact.bodyB.categoryBitMask == missileCategory) {
             
             firstNode.removeFromParent()
             secondNode.removeFromParent()
@@ -129,12 +130,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 2 - Set up initial location of missile
         var missile = spaceship.missile
         missile.position = spaceship.position
-        missile.zPosition = -1
-        missile.physicsBody = SKPhysicsBody(circleOfRadius: missile.size.width/2)
-        missile.physicsBody?.usesPreciseCollisionDetection = true
         missile.physicsBody?.categoryBitMask = missileCategory
-        missile.physicsBody?.contactTestBitMask = missileCategory | enemyCategory
-        missile.physicsBody?.dynamic = false
+        missile.physicsBody?.contactTestBitMask = missileCategory | enemyShipCategory
         self.addChild(missile)
         
         // 3 - Create the actions
@@ -161,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for var i = 0; i < 10; i++ {
             var anEnemyShip = EnemyShip()
             anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
-            anEnemyShip.physicsBody?.categoryBitMask = enemyCategory
+            anEnemyShip.physicsBody?.categoryBitMask = enemyShipCategory
             self.addChild(anEnemyShip)
         }
     }
