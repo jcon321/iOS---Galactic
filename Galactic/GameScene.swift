@@ -69,15 +69,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if(contact.bodyA.categoryBitMask == enemyShipCategory) && (contact.bodyB.categoryBitMask == missileCategory) {
             
+            // My missile hits enemy
+            
             let enemyShip = firstNode as! EnemyShip
             enemyShip.explode(self)
             secondNode.removeFromParent()
             
         } else if (contact.bodyB.categoryBitMask == enemyShipCategory) && (contact.bodyA.categoryBitMask == missileCategory) {
             
+            // My missile hits enemy
+            
             let enemyShip = secondNode as! EnemyShip
             enemyShip.explode(self)
             firstNode.removeFromParent()
+            
+        } else if (contact.bodyA.categoryBitMask == spaceshipCategory) && (contact.bodyB.categoryBitMask == enemyMissileCategory) {
+            
+            // Enemy missile hits me
+            
+        } else if (contact.bodyB.categoryBitMask == spaceshipCategory) && (contact.bodyA.categoryBitMask == enemyMissileCategory) {
+            
+            // Enemy missile hits me
+            
         }
     }
     
