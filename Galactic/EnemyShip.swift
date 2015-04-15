@@ -12,16 +12,9 @@ class EnemyShip: SKSpriteNode {
     
     var missileVersion = 0
     
-    var missile : SKSpriteNode {
+    var missile : Missile {
         get {
-            switch (missileVersion) {
-            case 1:
-                return SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 10, height: 10))
-            default:
-                var missle1 = SKSpriteNode(imageNamed: "missle1")
-                missle1.size = CGSize(width: 12, height: 12)
-                return missle1
-            }
+            return Missile(missileVersion: missileVersion)
         }
     }
     
@@ -33,5 +26,13 @@ class EnemyShip: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func explode(theParent: GameScene) {
+        var emitterNode = SKEmitterNode(fileNamed: "Explosion.sks")
+        emitterNode.position = self.position
+        theParent.addChild(emitterNode)
+        emitterNode.runAction(SKAction.waitForDuration(2), completion: {emitterNode.removeFromParent()})
+        self.removeFromParent()
     }
 }
