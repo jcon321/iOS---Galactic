@@ -120,13 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createAndAddSpaceship() {
         spaceship = Spaceship()
-        
         spaceship.position = CGPointMake(frame.size.width/2, frame.size.height/5)
-        spaceship.zPosition = 0
-        spaceship.physicsBody = SKPhysicsBody(circleOfRadius: spaceship.size.width/2)
-        spaceship.physicsBody?.usesPreciseCollisionDetection = true
         spaceship.physicsBody?.categoryBitMask = spaceshipCategory
-        spaceship.physicsBody?.dynamic = false
         self.addChild(spaceship)
     }
     
@@ -164,10 +159,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createAndAddEnemyShip() {
         for var i = 0; i < 10; i++ {
-            var anEnemyShip = SKSpriteNode(color: UIColor.purpleColor(), size: CGSize(width: 24, height: 24))
+            var anEnemyShip = EnemyShip()
             anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
-            anEnemyShip.zPosition = 0
-            anEnemyShip.physicsBody = SKPhysicsBody(circleOfRadius: anEnemyShip.size.width/2)
             anEnemyShip.physicsBody?.categoryBitMask = enemyCategory
             self.addChild(anEnemyShip)
         }
