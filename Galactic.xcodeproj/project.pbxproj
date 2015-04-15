@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17439C7A1ACC2F62002AA3F8 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17439C791ACC2F62002AA3F8 /* Spaceship.swift */; };
 		17E6729E1ACA0CC3000FDEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */; };
 		17E672A01ACA0CC3000FDEDD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 17E6729F1ACA0CC3000FDEDD /* GameScene.sks */; };
 		17E672A21ACA0CC3000FDEDD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E672A11ACA0CC3000FDEDD /* GameScene.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17439C791ACC2F62002AA3F8 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		17E672981ACA0CC3000FDEDD /* Galactic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galactic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6729C1ACA0CC3000FDEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		17E6729A1ACA0CC3000FDEDD /* Galactic */ = {
 			isa = PBXGroup;
 			children = (
+				17439C791ACC2F62002AA3F8 /* Spaceship.swift */,
 				17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */,
 				17E6729F1ACA0CC3000FDEDD /* GameScene.sks */,
 				17E672A11ACA0CC3000FDEDD /* GameScene.swift */,
@@ -221,6 +224,7 @@
 			files = (
 				17E672A21ACA0CC3000FDEDD /* GameScene.swift in Sources */,
 				17E672A41ACA0CC3000FDEDD /* GameViewController.swift in Sources */,
+				17439C7A1ACC2F62002AA3F8 /* Spaceship.swift in Sources */,
 				17E6729E1ACA0CC3000FDEDD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +351,7 @@
 				INFOPLIST_FILE = Galactic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -357,6 +362,7 @@
 				INFOPLIST_FILE = Galactic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -413,6 +419,7 @@
 				17E672BD1ACA0CC4000FDEDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17E672BE1ACA0CC4000FDEDD /* Build configuration list for PBXNativeTarget "GalacticTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +428,7 @@
 				17E672C01ACA0CC4000FDEDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
