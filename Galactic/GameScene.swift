@@ -65,11 +65,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         let firstNode = contact.bodyA.node as! SKSpriteNode
         let secondNode = contact.bodyB.node as! SKSpriteNode
-        println("got in")
         
-        if(contact.bodyA.categoryBitMask == missileCategory) && (contact.bodyB.categoryBitMask == enemyCategory) {
+        if(contact.bodyA.categoryBitMask == enemyCategory) && (contact.bodyB.categoryBitMask == missileCategory) {
             
-            println("Hit")
+            firstNode.removeFromParent()
+            secondNode.removeFromParent()
             
         }
     }
