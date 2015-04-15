@@ -19,12 +19,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var motionManager = CMMotionManager()
     var destX:CGFloat = 0.0
     
-    // Collision Bitmasks
-    let spaceshipCategory: UInt32 = 0x1 << 0
-    let missileCategory: UInt32 = 0x1 << 1
-    let enemyShipCategory: UInt32 = 0x1 << 2
-    let enemyMissileCategory: UInt32 = 0x1 << 3
-    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.physicsWorld.contactDelegate = self
@@ -67,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstNode = contact.bodyA.node as! SKSpriteNode
         let secondNode = contact.bodyB.node as! SKSpriteNode
         
-        if(contact.bodyA.categoryBitMask == enemyShipCategory) && (contact.bodyB.categoryBitMask == missileCategory) {
+        if(contact.bodyA.categoryBitMask == GlobalConstants.enemyShipCategory) && (contact.bodyB.categoryBitMask == GlobalConstants.missileCategory) {
             
             // My missile hits enemy
             
@@ -75,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             enemyShip.explode(self)
             secondNode.removeFromParent()
             
-        } else if (contact.bodyB.categoryBitMask == enemyShipCategory) && (contact.bodyA.categoryBitMask == missileCategory) {
+        } else if (contact.bodyB.categoryBitMask == GlobalConstants.enemyShipCategory) && (contact.bodyA.categoryBitMask == GlobalConstants.missileCategory) {
             
             // My missile hits enemy
             
@@ -83,11 +77,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             enemyShip.explode(self)
             firstNode.removeFromParent()
             
-        } else if (contact.bodyA.categoryBitMask == spaceshipCategory) && (contact.bodyB.categoryBitMask == enemyMissileCategory) {
+        } else if (contact.bodyA.categoryBitMask == GlobalConstants.spaceshipCategory) && (contact.bodyB.categoryBitMask == GlobalConstants.enemyMissileCategory) {
             
             // Enemy missile hits me
             
-        } else if (contact.bodyB.categoryBitMask == spaceshipCategory) && (contact.bodyA.categoryBitMask == enemyMissileCategory) {
+        } else if (contact.bodyB.categoryBitMask == GlobalConstants.spaceshipCategory) && (contact.bodyA.categoryBitMask == GlobalConstants.enemyMissileCategory) {
             
             // Enemy missile hits me
             
@@ -141,16 +135,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createAndAddSpaceship() {
         spaceship = Spaceship()
         spaceship.position = CGPointMake(frame.size.width/2, frame.size.height/5)
-        spaceship.physicsBody?.categoryBitMask = spaceshipCategory
         self.addChild(spaceship)
     }
     
     func createAndShootMissile() {
-        // 2 - Set up initial location of missile
         var missile = spaceship.missile
         missile.position = spaceship.position
-        missile.physicsBody?.categoryBitMask = missileCategory
-        missile.physicsBody?.contactTestBitMask = missileCategory | enemyShipCategory
+        missile.physicsBody?.categoryBitMask = GlobalConstants.missileCategory
+        missile.physicsBody?.contactTestBitMask = GlobalConstants.missileCategory | GlobalConstants.enemyShipCategory
         self.addChild(missile)
         
         // 3 - Create the actions
@@ -158,6 +150,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMoveDone = SKAction.removeFromParent()
         missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
     }
+    
+    func createAndAddEnemyShip() {
+        for var i = 0; i < 10; i++ {
+            var anEnemyShip = EnemyShip()
+            anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
+            self.addChild(anEnemyShip)
+        }
+    }
+    
     
     func handleWallFlip() {
         // When the spaceship reaches the left wall, move it to the right wall and vica versa
@@ -173,12 +174,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func createAndAddEnemyShip() {
-        for var i = 0; i < 10; i++ {
-            var anEnemyShip = EnemyShip()
-            anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
-            anEnemyShip.physicsBody?.categoryBitMask = enemyShipCategory
-            self.addChild(anEnemyShip)
-        }
-    }
 }

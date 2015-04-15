@@ -12,9 +12,9 @@ class EnemyShip: SKSpriteNode {
     
     var missileVersion = 0
     
-    var missile : Missile {
+    var missile : EnemyMissile {
         get {
-            return Missile(missileVersion: missileVersion)
+            return EnemyMissile(missileVersion: missileVersion)
         }
     }
     
@@ -22,6 +22,7 @@ class EnemyShip: SKSpriteNode {
         super.init(texture: nil, color: UIColor.purpleColor(), size: CGSize(width: 24, height: 24))
         self.zPosition = 0
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+        self.physicsBody?.categoryBitMask = GlobalConstants.enemyShipCategory
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,4 +36,5 @@ class EnemyShip: SKSpriteNode {
         emitterNode.runAction(SKAction.waitForDuration(2), completion: {emitterNode.removeFromParent()})
         self.removeFromParent()
     }
+    
 }

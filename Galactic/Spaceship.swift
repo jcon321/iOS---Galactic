@@ -22,6 +22,7 @@ class Spaceship: SKSpriteNode {
         super.init(texture: SKTexture(imageNamed: "Spaceship"), color: UIColor.clearColor(), size: CGSize(width: 75, height: 75))
         self.zPosition = 0
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+        self.physicsBody?.categoryBitMask = GlobalConstants.spaceshipCategory
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.dynamic = false
     }
