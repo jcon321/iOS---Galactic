@@ -8,12 +8,25 @@
 
 import SpriteKit
 
+/*
+*  Handles level creation
+*  Handles level completion
+*  Handles level completion labels
+*  Handles Enemy Shooting
+*/
 
 class EnemyShipManager {
     
     let theParent:GameScene
     
     var enemyCount = 0
+    
+    var enemyShips = [EnemyShip]()
+    
+    // Time intervals for Shooting
+    var lastUpdateTime = NSTimeInterval(0)
+    var timeSinceLastAction = NSTimeInterval(0)
+    var timeUntilNextAction = NSTimeInterval(4)
     
     init(theParent: GameScene) {
         self.theParent = theParent
@@ -28,6 +41,7 @@ class EnemyShipManager {
                 var anEnemyShip = EnemyShip()
                 anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(theParent.frame.width))), y: theParent.frame.height - 150)
                 theParent.addChild(anEnemyShip)
+                enemyShips.append(anEnemyShip)
             }
         
         default:
@@ -36,6 +50,7 @@ class EnemyShipManager {
                 var anEnemyShip = EnemyShip()
                 anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(theParent.frame.width))), y: theParent.frame.height - 150)
                 theParent.addChild(anEnemyShip)
+                enemyShips.append(anEnemyShip)
             }
         }
     }
@@ -61,6 +76,26 @@ class EnemyShipManager {
         let actionMove = SKAction.moveTo(CGPoint(x: levelLabel.position.x, y: -100), duration: 2.5)
         let actionMoveDone = SKAction.removeFromParent()
         levelLabel.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+
+    func enemyShoots(currentTime: NSTimeInterval) {
+        let delta = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        timeSinceLastAction += delta
+        
+        if timeSinceLastAction >= timeUntilNextAction {
+            
+            //shoot
+            let whichShip = Int(arc4random_uniform(UInt32(enemyShips.count)))
+            
+            enemyShips[whichShip].shoot(theParent)
+            
+            timeSinceLastAction = NSTimeInterval(0)
+            
+            timeUntilNextAction = enemyShips[whichShip].shootInterval
+            
+        }
+        
     }
     
 }

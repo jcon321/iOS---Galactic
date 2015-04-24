@@ -68,6 +68,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             level++
             enemyShipManager.createLevel(level)
         }
+        
+        // Handle enemy shooting
+        enemyShipManager.enemyShoots(currentTime)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -95,11 +98,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if (contact.bodyA.categoryBitMask == GlobalConstants.spaceshipCategory) && (contact.bodyB.categoryBitMask == GlobalConstants.enemyMissileCategory) {
             
             // Enemy missile hits me
+            spaceship.explode(self)
+            firstNode.removeFromParent()
+            secondNode.removeFromParent()
             
         } else if (contact.bodyB.categoryBitMask == GlobalConstants.spaceshipCategory) && (contact.bodyA.categoryBitMask == GlobalConstants.enemyMissileCategory) {
             
             // Enemy missile hits me
-            
+            spaceship.explode(self)
+            firstNode.removeFromParent()
+            secondNode.removeFromParent()
         }
     }
     

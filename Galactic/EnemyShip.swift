@@ -12,6 +12,8 @@ class EnemyShip: SKSpriteNode {
     
     var missileVersion = 0
     
+    var shootInterval = NSTimeInterval(1)
+    
     var missile : EnemyMissile {
         get {
             return EnemyMissile(missileVersion: missileVersion)
@@ -21,8 +23,10 @@ class EnemyShip: SKSpriteNode {
     init() {
         super.init(texture: nil, color: UIColor.purpleColor(), size: CGSize(width: 24, height: 24))
         self.zPosition = 0
+        self.name = "Enemy Ship"
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.categoryBitMask = GlobalConstants.enemyShipCategory
+        self.physicsBody?.dynamic = false
     }
     
     required init?(coder aDecoder: NSCoder) {

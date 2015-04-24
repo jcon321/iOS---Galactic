@@ -25,9 +25,10 @@ class Missile: SKSpriteNode {
         }
         
         self.zPosition = -1
+        self.name = "Missile"
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.usesPreciseCollisionDetection = true
-        self.physicsBody?.dynamic = false
+        self.physicsBody?.dynamic = true
         self.physicsBody?.categoryBitMask = GlobalConstants.missileCategory
         self.physicsBody?.contactTestBitMask = GlobalConstants.missileCategory | GlobalConstants.enemyShipCategory
     }

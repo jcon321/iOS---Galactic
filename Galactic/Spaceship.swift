@@ -21,6 +21,7 @@ class Spaceship: SKSpriteNode {
     init(theParent: GameScene) {
         super.init(texture: SKTexture(imageNamed: "Spaceship"), color: UIColor.clearColor(), size: CGSize(width: 75, height: 75))
         self.zPosition = 0
+        self.name = "Spaceship"
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.categoryBitMask = GlobalConstants.spaceshipCategory
         self.physicsBody?.usesPreciseCollisionDetection = true
@@ -35,13 +36,20 @@ class Spaceship: SKSpriteNode {
     
     func shoot(theParent: GameScene) {
         var missile = self.missile
-        missile.position = self.position
+        missile.position = CGPoint(x: self.position.x, y: self.position.y+10)
         theParent.addChild(missile)
         
         // 3 - Create the actions
         let actionMove = SKAction.moveTo(CGPoint(x: missile.position.x, y: 1000), duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
+    func explode(theParent: GameScene) {
+        var emitterNode = SKEmitterNode(fileNamed: "Explosion.sks")
+        emitterNode.position = self.position
+        theParent.addChild(emitterNode)
+        emitterNode.runAction(SKAction.waitForDuration(2), completion: {emitterNode.removeFromParent()})
     }
     
 }
