@@ -25,8 +25,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         //self.view?.showsPhysics = true
         
+        // Our main player
+        spaceship = Spaceship(theParent: self)
+        
         initializingScrollingBackground()
-        createAndAddSpaceship()
         handleAccelerometer()
         
         createAndAddEnemyShip()
@@ -43,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touch = touches.first as! UITouch
         let touchLocation = touch.locationInNode(self)
         
-        createAndShootMissile()
+        spaceship.shoot(self)
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -132,34 +134,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
-    func createAndAddSpaceship() {
-        spaceship = Spaceship()
-        spaceship.position = CGPointMake(frame.size.width/2, frame.size.height/5)
-        self.addChild(spaceship)
-    }
-    
-    func createAndShootMissile() {
-        var missile = spaceship.missile
-        missile.position = spaceship.position
-        missile.physicsBody?.categoryBitMask = GlobalConstants.missileCategory
-        missile.physicsBody?.contactTestBitMask = GlobalConstants.missileCategory | GlobalConstants.enemyShipCategory
-        self.addChild(missile)
-        
-        // 3 - Create the actions
-        let actionMove = SKAction.moveTo(CGPoint(x: missile.position.x, y: 1000), duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
-    }
-    
-    func createAndAddEnemyShip() {
-        for var i = 0; i < 10; i++ {
-            var anEnemyShip = EnemyShip()
-            anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
-            self.addChild(anEnemyShip)
-        }
-    }
-    
-    
     func handleWallFlip() {
         // When the spaceship reaches the left wall, move it to the right wall and vica versa
         
@@ -171,6 +145,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spaceship.removeAllActions()
             var movetoLeftWall = SKAction.moveToX(0, duration: 0)
             spaceship.runAction(movetoLeftWall)
+        }
+    }
+    
+    func createAndAddEnemyShip() {
+        for var i = 0; i < 10; i++ {
+            var anEnemyShip = EnemyShip()
+            anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
+            self.addChild(anEnemyShip)
         }
     }
     
