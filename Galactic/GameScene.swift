@@ -15,23 +15,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var spaceship: Spaceship!
     
+    var enemyShipManager: EnemyShipManager!
+    
+    var level = 0
+    
     // Accelerometer
     var motionManager = CMMotionManager()
     var destX:CGFloat = 0.0
     
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
+
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         //self.view?.showsPhysics = true
         
-        // Our main player
         spaceship = Spaceship(theParent: self)
         
         initializingScrollingBackground()
         handleAccelerometer()
         
-        createAndAddEnemyShip()
+        // Setup Level 0
+        enemyShipManager = EnemyShipManager(theParent: self)
+        enemyShipManager.createLevel(level)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -57,6 +62,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         handleWallFlip()
         
         self.moveBackground()
+        
+        // Check if all enemies destroyed to go to next level
+        if (enemyShipManager.allEnemyDestroyed()) {
+            level++
+            enemyShipManager.createLevel(level)
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -70,6 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let enemyShip = firstNode as! EnemyShip
             enemyShip.explode(self)
             secondNode.removeFromParent()
+            enemyShipManager.enemyCount--
             
         } else if (contact.bodyB.categoryBitMask == GlobalConstants.enemyShipCategory) && (contact.bodyA.categoryBitMask == GlobalConstants.missileCategory) {
             
@@ -78,6 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let enemyShip = secondNode as! EnemyShip
             enemyShip.explode(self)
             firstNode.removeFromParent()
+            enemyShipManager.enemyCount--
             
         } else if (contact.bodyA.categoryBitMask == GlobalConstants.spaceshipCategory) && (contact.bodyB.categoryBitMask == GlobalConstants.enemyMissileCategory) {
             
@@ -145,14 +158,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spaceship.removeAllActions()
             var movetoLeftWall = SKAction.moveToX(0, duration: 0)
             spaceship.runAction(movetoLeftWall)
-        }
-    }
-    
-    func createAndAddEnemyShip() {
-        for var i = 0; i < 10; i++ {
-            var anEnemyShip = EnemyShip()
-            anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.width))), y: self.frame.height - 150)
-            self.addChild(anEnemyShip)
         }
     }
     
