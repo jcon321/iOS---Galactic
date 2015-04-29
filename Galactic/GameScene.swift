@@ -8,10 +8,12 @@
 
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var background: SKSpriteNode!
+    var backgroundMusicPlayer: AVAudioPlayer!
     
     var spaceship: Spaceship!
     
@@ -28,6 +30,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         //self.view?.showsPhysics = true
+        
+        playBackgroundMusic("GalacticJam.m4a")
         
         spaceship = Spaceship(theParent: self)
         
@@ -153,6 +157,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         })
+    }
+    
+    func playBackgroundMusic(filename: String) {
+        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
+        if url == nil {
+            println("Could not find file: \(filename)")
+            return
+        }
+        
+        var error: NSError? = nil
+        backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        
+        if backgroundMusicPlayer == nil {
+            println("Could not create audio player: \(error!)")
+            return
+        }
+        
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
     }
     
     func handleWallFlip() {
