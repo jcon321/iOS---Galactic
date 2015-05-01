@@ -85,8 +85,16 @@ class EnemyShipManager {
         
         if timeSinceLastAction >= timeUntilNextAction {
             
-            //shoot
-            let whichShip = Int(arc4random_uniform(UInt32(enemyShips.count)))
+            //grab a random enemy ship that is not dead
+            var foundAlive = false
+            var whichShip = 0
+            
+            while(!foundAlive) {
+                whichShip = Int(arc4random_uniform(UInt32(enemyShips.count)))
+                if (!enemyShips[whichShip].dead) {
+                    foundAlive = true
+                }
+            }
             
             enemyShips[whichShip].shoot(theParent)
             

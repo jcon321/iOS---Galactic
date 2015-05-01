@@ -14,6 +14,8 @@ class EnemyShip: SKSpriteNode {
     
     var shootInterval = NSTimeInterval(1)
     
+    var dead = false
+    
     var missile : EnemyMissile {
         get {
             return EnemyMissile(missileVersion: missileVersion)

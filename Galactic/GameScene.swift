@@ -87,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let enemyShip = firstNode as! EnemyShip
             enemyShip.explode(self)
+            enemyShip.dead = true
             secondNode.removeFromParent()
             enemyShipManager.enemyCount--
             
@@ -96,6 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let enemyShip = secondNode as! EnemyShip
             enemyShip.explode(self)
+            enemyShip.dead = true
             firstNode.removeFromParent()
             enemyShipManager.enemyCount--
             
