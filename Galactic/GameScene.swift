@@ -11,15 +11,14 @@ import CoreMotion
 import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
-    var background: SKSpriteNode!
+
     var backgroundMusicPlayer: AVAudioPlayer!
     
     var spaceship: Spaceship!
     
     var enemyShipManager: EnemyShipManager!
     
-    var level = 0
+    var level = 1
     
     // Accelerometer
     var motionManager = CMMotionManager()
@@ -41,11 +40,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Setup Level 0
         enemyShipManager = EnemyShipManager(theParent: self)
         enemyShipManager.createLevel(level)
+        
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
-        
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -179,6 +178,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundMusicPlayer.numberOfLoops = -1
         backgroundMusicPlayer.prepareToPlay()
         backgroundMusicPlayer.play()
+    }
+    
+    func stopBackgroundMusic() {
+        backgroundMusicPlayer.stop()
     }
     
     func handleWallFlip() {

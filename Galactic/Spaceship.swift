@@ -51,6 +51,8 @@ class Spaceship: SKSpriteNode {
         theParent.addChild(emitterNode)
         emitterNode.runAction(SKAction.waitForDuration(2), completion: {emitterNode.removeFromParent()})
         
+        theParent.stopBackgroundMusic()
+        
         // Transition to GameOverScene
         theParent.runAction(SKAction.sequence([SKAction.waitForDuration(2.0), SKAction.runBlock() {
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)

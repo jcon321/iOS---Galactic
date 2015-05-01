@@ -35,7 +35,7 @@ class EnemyShipManager {
     func createLevel(currentLevel: Int) {
         levelLabelAction(currentLevel)
         switch currentLevel {
-        case 1:
+        case 2:
             enemyCount = 15
             for var i = 0; i < 15; i++ {
                 var anEnemyShip = EnemyShip()
