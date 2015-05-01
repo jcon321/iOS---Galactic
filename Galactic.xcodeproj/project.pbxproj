@@ -15,6 +15,7 @@
 		1742F3801ADEF7E100176528 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1742F37F1ADEF7E100176528 /* GlobalConstants.swift */; };
 		17439C7A1ACC2F62002AA3F8 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17439C791ACC2F62002AA3F8 /* Spaceship.swift */; };
 		1775044D1AEA722200B32F47 /* EnemyShipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1775044C1AEA722200B32F47 /* EnemyShipManager.swift */; };
+		17754C391AF3F6A900CEB4A6 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */; };
 		17E6729E1ACA0CC3000FDEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */; };
 		17E672A01ACA0CC3000FDEDD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 17E6729F1ACA0CC3000FDEDD /* GameScene.sks */; };
 		17E672A21ACA0CC3000FDEDD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E672A11ACA0CC3000FDEDD /* GameScene.swift */; };
@@ -45,6 +46,7 @@
 		1742F37F1ADEF7E100176528 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		17439C791ACC2F62002AA3F8 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		1775044C1AEA722200B32F47 /* EnemyShipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyShipManager.swift; sourceTree = "<group>"; };
+		17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		17E672981ACA0CC3000FDEDD /* Galactic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galactic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6729C1ACA0CC3000FDEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				17E672A81ACA0CC3000FDEDD /* Images.xcassets */,
 				17E672AA1ACA0CC3000FDEDD /* LaunchScreen.xib */,
 				17E6729B1ACA0CC3000FDEDD /* Supporting Files */,
+				17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */,
 			);
 			path = Galactic;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17754C391AF3F6A900CEB4A6 /* GameOverScene.swift in Sources */,
 				1742F3731ADEBDC800176528 /* EnemyShip.swift in Sources */,
 				17E672A21ACA0CC3000FDEDD /* GameScene.swift in Sources */,
 				17E672A41ACA0CC3000FDEDD /* GameViewController.swift in Sources */,
