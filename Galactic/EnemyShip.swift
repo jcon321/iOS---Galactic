@@ -23,7 +23,7 @@ class EnemyShip: SKSpriteNode {
     }
     
     init() {
-        super.init(texture: nil, color: UIColor.purpleColor(), size: CGSize(width: 24, height: 24))
+        super.init(texture: SKTexture(imageNamed: "Enemy1"), color: UIColor.clearColor(), size: CGSize(width: 50, height: 50))
         self.zPosition = 0
         self.name = "Enemy Ship"
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
