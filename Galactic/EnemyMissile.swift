@@ -13,14 +13,14 @@ import SpriteKit
 class EnemyMissile: SKSpriteNode {
     
     // Image names
-    let missile1 = ""
+    let missile1 = "enemyMissile1"
     
     
     init(missileVersion:Int) {
         
         switch(missileVersion) {
         default:
-            super.init(texture: nil, color: UIColor.redColor(), size: CGSize(width: 10, height: 10))
+            super.init(texture: SKTexture(imageNamed: missile1), color: UIColor.clearColor(), size: CGSize(width: 8, height: 8))
         }
         
         self.zPosition = -1

@@ -33,25 +33,38 @@ class EnemyShipManager {
     }
     
     func createLevel(currentLevel: Int) {
-        levelLabelAction(currentLevel)
-        switch currentLevel {
-        case 2:
-            enemyCount = 15
-            for var i = 0; i < 15; i++ {
-                var anEnemyShip = EnemyShip()
-                anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(theParent.frame.width))), y: theParent.frame.height - 150)
-                theParent.addChild(anEnemyShip)
-                enemyShips.append(anEnemyShip)
-            }
         
+        levelLabelAction(currentLevel)
+        
+        switch currentLevel {
+        case 3:
+            enemyCount = 8
+        case 2:
+            enemyCount = 5
         default:
-            enemyCount = 10
-            for var i = 0; i < 10; i++ {
-                var anEnemyShip = EnemyShip()
-                anEnemyShip.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(theParent.frame.width))), y: theParent.frame.height - 150)
-                theParent.addChild(anEnemyShip)
-                enemyShips.append(anEnemyShip)
-            }
+            enemyCount = 3
+        }
+        
+        for var i = 0; i < enemyCount; i++ {
+            var anEnemyShip = EnemyShip()
+            theParent.addChild(anEnemyShip)
+            enemyShips.append(anEnemyShip)
+        }
+        
+        placeEnemyShips()
+    }
+    
+    func placeEnemyShips() {
+        
+        let y = self.theParent.size.height - 150
+        let length = self.theParent.size.width
+        let max = 0.90 * length
+        let min = 0.10 * length
+        let mid = length / 2
+        
+        for var i = 0; i < enemyShips.count; i++ {
+            // TODO: figure out position placement algor
+            enemyShips[i].position = CGPoint(x: mid, y: y)
         }
     }
     
