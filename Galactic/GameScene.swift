@@ -26,21 +26,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
 
+        motionManager.accelerometerUpdateInterval = 0.05
+        handleAccelerometer()
+        spaceship = Spaceship(theParent: self)
+        
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         //self.view?.showsPhysics = true
         
         playBackgroundMusic("GalacticJam.m4a")
         
-        spaceship = Spaceship(theParent: self)
-        
         initializingScrollingBackground()
-        handleAccelerometer()
         
         // Setup Level 0
         enemyShipManager = EnemyShipManager(theParent: self)
         enemyShipManager.createLevel(level)
-        
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -124,12 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 var currentX = self.spaceship.position.x
                 
-                if data.acceleration.x < 0 {
-                    self.destX = currentX + CGFloat(data.acceleration.y * 2000)
-                }
-                else if data.acceleration.x > 0 {
-                    self.destX = currentX + CGFloat(data.acceleration.y * 2000)
-                }
+                self.destX = currentX + CGFloat(data.acceleration.y * 2000)
                 
             })
         }

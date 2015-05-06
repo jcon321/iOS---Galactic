@@ -20,6 +20,7 @@ class EnemyShipManager {
     let theParent:GameScene
     
     var enemyCount = 0
+    var enemyShipSpacing : CGFloat = 0
     
     var enemyShips = [EnemyShip]()
     
@@ -36,13 +37,24 @@ class EnemyShipManager {
         
         levelLabelAction(currentLevel)
         
+        enemyShips.removeAll(keepCapacity: false)
+        
         switch currentLevel {
+        case 5:
+            enemyCount = 11
+            enemyShipSpacing = 80
+        case 4:
+            enemyCount = 9
+            enemyShipSpacing = 100
         case 3:
-            enemyCount = 8
+            enemyCount = 7
+            enemyShipSpacing = 120
         case 2:
             enemyCount = 5
+            enemyShipSpacing = 180
         default:
             enemyCount = 3
+            enemyShipSpacing = 240
         }
         
         for var i = 0; i < enemyCount; i++ {
@@ -56,15 +68,20 @@ class EnemyShipManager {
     
     func placeEnemyShips() {
         
-        let y = self.theParent.size.height - 150
-        let length = self.theParent.size.width
-        let max = 0.90 * length
-        let min = 0.10 * length
-        let mid = length / 2
+        let row1 = self.theParent.size.height - 150
+        let mid = self.theParent.size.width / 2
         
-        for var i = 0; i < enemyShips.count; i++ {
-            // TODO: figure out position placement algor
-            enemyShips[i].position = CGPoint(x: mid, y: y)
+        var offsetCounter : CGFloat = 1
+        
+        for var i = 0; i < enemyCount; i++ {
+            if i == 0 {
+                enemyShips[i].position = CGPoint(x: mid, y: row1)
+            } else if i % 2 == 0 {
+                enemyShips[i].position = CGPoint(x: mid - (enemyShipSpacing * offsetCounter), y: row1)
+                offsetCounter++
+            } else {
+                enemyShips[i].position = CGPoint(x: mid + (enemyShipSpacing * offsetCounter), y: row1)
+            }
         }
     }
     
