@@ -72,15 +72,20 @@ class EnemyShipManager {
         let mid = self.theParent.size.width / 2
         
         var offsetCounter : CGFloat = 1
-        
+    
         for var i = 0; i < enemyCount; i++ {
+            // Start the Enemy Ship off the map so it can fly into place
+            enemyShips[i].position = CGPoint(x: mid, y: row1 + 200)
             if i == 0 {
-                enemyShips[i].position = CGPoint(x: mid, y: row1)
+                let actionMove = SKAction.moveTo(CGPoint(x: mid, y: row1), duration: enemyShips[i].shipSpeed)
+                enemyShips[i].runAction(actionMove)
             } else if i % 2 == 0 {
-                enemyShips[i].position = CGPoint(x: mid - (enemyShipSpacing * offsetCounter), y: row1)
+                let actionMove = SKAction.moveTo(CGPoint(x: mid - (enemyShipSpacing * offsetCounter), y: row1), duration: enemyShips[i].shipSpeed)
+                enemyShips[i].runAction(actionMove)
                 offsetCounter++
             } else {
-                enemyShips[i].position = CGPoint(x: mid + (enemyShipSpacing * offsetCounter), y: row1)
+                let actionMove = SKAction.moveTo(CGPoint(x: mid + (enemyShipSpacing * offsetCounter), y: row1), duration: enemyShips[i].shipSpeed)
+                enemyShips[i].runAction(actionMove)
             }
         }
     }

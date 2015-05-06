@@ -16,6 +16,9 @@ class EnemyShip: SKSpriteNode {
     
     var dead = false
     
+    // Lower = faster
+    var shipSpeed : NSTimeInterval = 1.75
+    
     var missile : EnemyMissile {
         get {
             return EnemyMissile(missileVersion: missileVersion)
