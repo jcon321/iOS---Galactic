@@ -79,18 +79,24 @@ class EnemyShipManager {
             if i == 0 {
                 let actionMove = SKAction.moveTo(CGPoint(x: mid, y: row1), duration: enemyShips[i].shipSpeed)
                 let thisI = i
-                enemyShips[i].runAction(actionMove, completion: {self.enemyShips[thisI].inPosition = true})
+                enemyShips[i].runAction(actionMove, completion: {self.shipIsInPosition(thisI)})
             } else if i % 2 == 0 {
                 let actionMove = SKAction.moveTo(CGPoint(x: mid - (enemyShipSpacing * offsetCounter), y: row1), duration: enemyShips[i].shipSpeed)
                 let thisI = i
-                enemyShips[i].runAction(actionMove, completion: {self.enemyShips[thisI].inPosition = true})
+                enemyShips[i].runAction(actionMove, completion: {self.shipIsInPosition(thisI)})
                 offsetCounter++
             } else {
                 let actionMove = SKAction.moveTo(CGPoint(x: mid + (enemyShipSpacing * offsetCounter), y: row1), duration: enemyShips[i].shipSpeed)
                 let thisI = i
-                enemyShips[i].runAction(actionMove, completion: {self.enemyShips[thisI].inPosition = true})
+                enemyShips[i].runAction(actionMove, completion: {self.shipIsInPosition(thisI)})
             }
         }
+    }
+    
+    func shipIsInPosition(thisI: Int) {
+        // Allow it to shoot, Allow it to be shot, Remove barrier particle
+        self.enemyShips[thisI].inPosition = true;
+        self.enemyShips[thisI].childNodeWithName("barrier")?.removeFromParent()
     }
     
     func allEnemyDestroyed() -> Bool {

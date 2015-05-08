@@ -16,6 +16,7 @@
 		17439C7A1ACC2F62002AA3F8 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17439C791ACC2F62002AA3F8 /* Spaceship.swift */; };
 		1761337B1AFD3B5200A8946A /* GalacticJam.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1761337A1AFD3B5200A8946A /* GalacticJam.m4a */; };
 		1761337E1AFD3C0F00A8946A /* SpaceshipExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */; };
+		1761338E1AFD4A0C00A8946A /* Barrier.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1761338D1AFD4A0C00A8946A /* Barrier.sks */; };
 		1775044D1AEA722200B32F47 /* EnemyShipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1775044C1AEA722200B32F47 /* EnemyShipManager.swift */; };
 		17754C391AF3F6A900CEB4A6 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */; };
 		17E6729E1ACA0CC3000FDEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		17439C791ACC2F62002AA3F8 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		1761337A1AFD3B5200A8946A /* GalacticJam.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GalacticJam.m4a; sourceTree = "<group>"; };
 		1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceshipExplosion.sks; sourceTree = "<group>"; };
+		1761338D1AFD4A0C00A8946A /* Barrier.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Barrier.sks; sourceTree = "<group>"; };
 		1775044C1AEA722200B32F47 /* EnemyShipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyShipManager.swift; sourceTree = "<group>"; };
 		17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		17E672981ACA0CC3000FDEDD /* Galactic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galactic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,27 +97,28 @@
 		1742F37D1ADEEFAE00176528 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				1761337C1AFD3B8500A8946A /* SpaceShip-Explosion */,
-				1742F37E1ADEF16000176528 /* EnemyShip-Explosion */,
+				1761337C1AFD3B8500A8946A /* SpaceShip */,
+				1742F37E1ADEF16000176528 /* EnemyShip */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
 		};
-		1742F37E1ADEF16000176528 /* EnemyShip-Explosion */ = {
+		1742F37E1ADEF16000176528 /* EnemyShip */ = {
 			isa = PBXGroup;
 			children = (
 				1742F3791ADEEEEA00176528 /* Explosion.sks */,
 				1742F37A1ADEEEEA00176528 /* spark.png */,
+				1761338D1AFD4A0C00A8946A /* Barrier.sks */,
 			);
-			name = "EnemyShip-Explosion";
+			name = EnemyShip;
 			sourceTree = "<group>";
 		};
-		1761337C1AFD3B8500A8946A /* SpaceShip-Explosion */ = {
+		1761337C1AFD3B8500A8946A /* SpaceShip */ = {
 			isa = PBXGroup;
 			children = (
 				1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */,
 			);
-			name = "SpaceShip-Explosion";
+			name = SpaceShip;
 			sourceTree = "<group>";
 		};
 		1775044E1AEA724300B32F47 /* EnemyShip */ = {
@@ -283,6 +286,7 @@
 				1742F37C1ADEEEEA00176528 /* spark.png in Resources */,
 				17E672A91ACA0CC3000FDEDD /* Images.xcassets in Resources */,
 				1742F37B1ADEEEEA00176528 /* Explosion.sks in Resources */,
+				1761338E1AFD4A0C00A8946A /* Barrier.sks in Resources */,
 				17E672A01ACA0CC3000FDEDD /* GameScene.sks in Resources */,
 				17E672A71ACA0CC3000FDEDD /* Main.storyboard in Resources */,
 				1761337E1AFD3C0F00A8946A /* SpaceshipExplosion.sks in Resources */,

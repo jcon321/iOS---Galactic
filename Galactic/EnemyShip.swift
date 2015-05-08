@@ -35,6 +35,10 @@ class EnemyShip: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.categoryBitMask = GlobalConstants.enemyShipCategory
         self.physicsBody?.dynamic = false
+        
+        var barrier = SKEmitterNode(fileNamed: "Barrier.sks")
+        barrier.name = "barrier"
+        self.addChild(barrier)
     }
     
     required init?(coder aDecoder: NSCoder) {
