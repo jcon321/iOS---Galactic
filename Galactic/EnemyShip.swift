@@ -19,6 +19,9 @@ class EnemyShip: SKSpriteNode {
     // Lower = faster
     var shipSpeed : NSTimeInterval = 1.75
     
+    // In position means has the ship arrived at its final position after spawning
+    var inPosition = false
+    
     var missile : EnemyMissile {
         get {
             return EnemyMissile(missileVersion: missileVersion)
@@ -47,14 +50,16 @@ class EnemyShip: SKSpriteNode {
     }
     
     func shoot(theParent: GameScene) {
-        var missile = self.missile
-        missile.position = self.position
-        theParent.addChild(missile)
-        
-        // 3 - Create the actions
-        let actionMove = SKAction.moveTo(CGPoint(x: missile.position.x, y: -100), duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+        if inPosition {
+            var missile = self.missile
+            missile.position = self.position
+            theParent.addChild(missile)
+            
+            // 3 - Create the actions
+            let actionMove = SKAction.moveTo(CGPoint(x: missile.position.x, y: -100), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+        }
     }
     
 }
