@@ -46,10 +46,10 @@ class Spaceship: SKSpriteNode {
     }
     
     func explode(theParent: GameScene) {
-        var emitterNode = SKEmitterNode(fileNamed: "Explosion.sks")
+        var emitterNode = SKEmitterNode(fileNamed: "SpaceshipExplosion.sks")
         emitterNode.position = self.position
         theParent.addChild(emitterNode)
-        emitterNode.runAction(SKAction.waitForDuration(2), completion: {emitterNode.removeFromParent()})
+        emitterNode.runAction(SKAction.waitForDuration(1.5), completion: {emitterNode.removeFromParent()})
         
         theParent.stopBackgroundMusic()
         
