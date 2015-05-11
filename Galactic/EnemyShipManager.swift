@@ -111,13 +111,19 @@ class EnemyShipManager {
     }
     
     func levelLabelAction(currentLevel: Int) {
+        var currentLevelLabel = SKLabelNode(fontNamed: "Heiti SC")
+        currentLevelLabel.text = "\(currentLevel)"
+        currentLevelLabel.fontSize = 100
+        currentLevelLabel.position = CGPoint(x: 200, y: 200)
+        theParent.addChild(currentLevelLabel)
+        
         var levelLabel = SKSpriteNode(texture: SKTexture(imageNamed: "LevelUp"), color: UIColor.clearColor(), size: CGSize(width: 350, height: 200))
         levelLabel.position = CGPointMake(CGRectGetMidX(theParent.frame), 0)
         theParent.addChild(levelLabel)
         
         let actionMove = SKAction.moveTo(CGPoint(x: levelLabel.position.x, y: theParent.frame.height), duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
-        levelLabel.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+        levelLabel.runAction(SKAction.sequence([actionMove, actionMoveDone]), completion: {currentLevelLabel.removeFromParent()})
     }
 
     func enemyShoots(currentTime: NSTimeInterval) {
