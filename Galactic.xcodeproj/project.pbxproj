@@ -52,7 +52,7 @@
 		1761338D1AFD4A0C00A8946A /* Barrier.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Barrier.sks; sourceTree = "<group>"; };
 		1775044C1AEA722200B32F47 /* EnemyShipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyShipManager.swift; sourceTree = "<group>"; };
 		17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
-		17E672981ACA0CC3000FDEDD /* Galactic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galactic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E672981ACA0CC3000FDEDD /* Galactic Crusade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galactic Crusade.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6729C1ACA0CC3000FDEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E6729F1ACA0CC3000FDEDD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		17E672991ACA0CC3000FDEDD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17E672981ACA0CC3000FDEDD /* Galactic.app */,
+				17E672981ACA0CC3000FDEDD /* Galactic Crusade.app */,
 				17E672B11ACA0CC3000FDEDD /* GalacticTests.xctest */,
 			);
 			name = Products;
@@ -219,7 +219,7 @@
 			);
 			name = Galactic;
 			productName = Galactic;
-			productReference = 17E672981ACA0CC3000FDEDD /* Galactic.app */;
+			productReference = 17E672981ACA0CC3000FDEDD /* Galactic Crusade.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17E672B01ACA0CC3000FDEDD /* GalacticTests */ = {
@@ -442,7 +442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Galactic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galactic Crusade";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -453,7 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Galactic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galactic Crusade";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
