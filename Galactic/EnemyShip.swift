@@ -36,9 +36,7 @@ class EnemyShip: SKSpriteNode {
         self.physicsBody?.categoryBitMask = GlobalConstants.enemyShipCategory
         self.physicsBody?.dynamic = false
         
-        var barrier = SKEmitterNode(fileNamed: "Barrier.sks")
-        barrier.name = "barrier"
-        self.addChild(barrier)
+        addBarrier()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +62,16 @@ class EnemyShip: SKSpriteNode {
             let actionMoveDone = SKAction.removeFromParent()
             missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
         }
+    }
+    
+    func addBarrier() {
+        var barrier = SKEmitterNode(fileNamed: "Barrier.sks")
+        barrier.name = "barrier"
+        self.addChild(barrier)
+    }
+    
+    func removeBarrier() {
+        self.childNodeWithName("barrier")?.removeFromParent()
     }
     
 }

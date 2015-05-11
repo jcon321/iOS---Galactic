@@ -96,7 +96,7 @@ class EnemyShipManager {
     func shipIsInPosition(thisI: Int) {
         // Allow it to shoot, Allow it to be shot, Remove barrier particle
         self.enemyShips[thisI].inPosition = true;
-        self.enemyShips[thisI].childNodeWithName("barrier")?.removeFromParent()
+        self.enemyShips[thisI].removeBarrier()
     }
     
     func allEnemyDestroyed() -> Bool {
@@ -111,13 +111,11 @@ class EnemyShipManager {
     }
     
     func levelLabelAction(currentLevel: Int) {
-        var levelLabel = SKLabelNode(fontNamed: "Arial")
-        levelLabel.text = "Level \(currentLevel)"
-        levelLabel.fontSize = 150
-        levelLabel.position = CGPointMake(CGRectGetMidX(theParent.frame), CGRectGetHeight(theParent.frame))
+        var levelLabel = SKSpriteNode(texture: SKTexture(imageNamed: "LevelUp"), color: UIColor.clearColor(), size: CGSize(width: 350, height: 200))
+        levelLabel.position = CGPointMake(CGRectGetMidX(theParent.frame), 0)
         theParent.addChild(levelLabel)
         
-        let actionMove = SKAction.moveTo(CGPoint(x: levelLabel.position.x, y: -100), duration: 2.5)
+        let actionMove = SKAction.moveTo(CGPoint(x: levelLabel.position.x, y: theParent.frame.height), duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         levelLabel.runAction(SKAction.sequence([actionMove, actionMoveDone]))
     }
