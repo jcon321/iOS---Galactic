@@ -28,6 +28,7 @@ class Spaceship: SKSpriteNode {
         self.physicsBody?.dynamic = false
         self.position = CGPointMake(theParent.frame.size.width/2, theParent.frame.size.height/5)
         theParent.addChild(self)
+        addThruster()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +44,12 @@ class Spaceship: SKSpriteNode {
         let actionMove = SKAction.moveTo(CGPoint(x: missile.position.x, y: 1000), duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         missile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
+    func addThruster() {
+        var thruster = SKEmitterNode(fileNamed: "Thruster.sks")
+        thruster.zPosition = -10
+        self.addChild(thruster)
     }
     
     func explode(theParent: GameScene) {

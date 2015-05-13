@@ -66,7 +66,6 @@ class EnemyShip: SKSpriteNode {
     
     func addBarrier() {
         var barrier = SKEmitterNode(fileNamed: "Barrier.sks")
-        barrier.name = "barrier"
         self.addChild(barrier)
     }
     

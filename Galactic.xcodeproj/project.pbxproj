@@ -17,6 +17,7 @@
 		1761337B1AFD3B5200A8946A /* GalacticJam.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1761337A1AFD3B5200A8946A /* GalacticJam.m4a */; };
 		1761337E1AFD3C0F00A8946A /* SpaceshipExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */; };
 		1761338E1AFD4A0C00A8946A /* Barrier.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1761338D1AFD4A0C00A8946A /* Barrier.sks */; };
+		176133921B03E26000A8946A /* Thruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 176133911B03E26000A8946A /* Thruster.sks */; };
 		1775044D1AEA722200B32F47 /* EnemyShipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1775044C1AEA722200B32F47 /* EnemyShipManager.swift */; };
 		17754C391AF3F6A900CEB4A6 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */; };
 		17E6729E1ACA0CC3000FDEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6729D1ACA0CC3000FDEDD /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		1761337A1AFD3B5200A8946A /* GalacticJam.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GalacticJam.m4a; sourceTree = "<group>"; };
 		1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceshipExplosion.sks; sourceTree = "<group>"; };
 		1761338D1AFD4A0C00A8946A /* Barrier.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Barrier.sks; sourceTree = "<group>"; };
+		176133911B03E26000A8946A /* Thruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Thruster.sks; sourceTree = "<group>"; };
 		1775044C1AEA722200B32F47 /* EnemyShipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyShipManager.swift; sourceTree = "<group>"; };
 		17754C381AF3F6A900CEB4A6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		17E672981ACA0CC3000FDEDD /* Galactic Crusade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galactic Crusade.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1761337D1AFD3C0F00A8946A /* SpaceshipExplosion.sks */,
+				176133911B03E26000A8946A /* Thruster.sks */,
 			);
 			name = SpaceShip;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				1742F37B1ADEEEEA00176528 /* Explosion.sks in Resources */,
 				1761338E1AFD4A0C00A8946A /* Barrier.sks in Resources */,
 				17E672A01ACA0CC3000FDEDD /* GameScene.sks in Resources */,
+				176133921B03E26000A8946A /* Thruster.sks in Resources */,
 				17E672A71ACA0CC3000FDEDD /* Main.storyboard in Resources */,
 				1761337E1AFD3C0F00A8946A /* SpaceshipExplosion.sks in Resources */,
 				1761337B1AFD3B5200A8946A /* GalacticJam.m4a in Resources */,
