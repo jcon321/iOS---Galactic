@@ -22,6 +22,9 @@ class EnemyShip: SKSpriteNode {
     // In position means has the ship arrived at its final position after spawning
     var inPosition = false
     
+    // Whether or not the ship is moving (doesn't count when spawning and moving into initial position)
+    var isMoving = false
+    
     var missile : EnemyMissile {
         get {
             return EnemyMissile(missileVersion: missileVersion)

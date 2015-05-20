@@ -154,4 +154,57 @@ class EnemyShipManager {
         
     }
     
+    func enemyMoves() {
+        
+        for var i = 0; i < enemyShips.count; i++ {
+            
+            if enemyShips[i].inPosition {
+                
+                if !enemyShips[i].isMoving {
+                
+                    // Set isMoving to true until entire action is finished
+                    enemyShips[i].isMoving = true
+                    
+                    var currentPos = enemyShips[i].position
+                    var shipSpeed = enemyShips[i].shipSpeed
+                    
+                    
+                    // Move down
+                    let actionMoveDown = SKAction.moveToY(currentPos.y - 50 , duration: shipSpeed / 2)
+                    
+                    // Move right
+                    let actionMoveRight = SKAction.moveToX(currentPos.x + 50 , duration: shipSpeed / 2)
+                    
+                    // Move up
+                    let actionMoveUp = SKAction.moveToY(currentPos.y , duration: shipSpeed / 2)
+                    
+                    // Move left
+                    let actionMoveLeft = SKAction.moveToX(currentPos.x,  duration: shipSpeed / 2)
+                    
+                    // Pause
+                    let actionPause = SKAction.waitForDuration(2.0)
+                    
+                    // Sequence
+                    let actionMoveSequence = SKAction.sequence([actionMoveDown, actionMoveRight, actionMoveUp, actionMoveLeft, actionPause])
+                    
+                    // On completion of action set isMoving back to false
+                    let thisI = i;
+                    enemyShips[i].runAction(actionMoveSequence, completion: {self.enemyShips[thisI].isMoving = false})
+                }
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

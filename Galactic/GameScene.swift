@@ -74,6 +74,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handle enemy shooting
         enemyShipManager.enemyShoots(currentTime)
+        
+        // Handle enemy manuevering
+        enemyShipManager.enemyMoves()
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
